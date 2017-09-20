@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "WeatherDetails.findbyCity",
+        @NamedQuery(name = "WeatherDetails.findbyCityCoordinates",
                 query = "SELECT w FROM WeatherDetails w WHERE w.coordinates.latitude=:latitude and w.coordinates.longitude=:longitude")
 })
 public class WeatherDetails {

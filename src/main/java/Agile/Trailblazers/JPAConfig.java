@@ -18,7 +18,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-//@PropertySource(value = "classpath:application.properties")
+@PropertySource(value = "classpath:application.properties")
 public class JPAConfig {
 
     @Autowired private Environment env;
@@ -32,8 +32,8 @@ public class JPAConfig {
 
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect");
-        properties.put("hibernate.hbm2ddl.auto", "create");
-        properties.put("hibernate.show_sql", "true");
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl"));
+        properties.put("hibernate.show_sql", env.getProperty("hibernate.show.sql"));
         emf.setJpaProperties(properties);
         return emf;
     }
@@ -42,9 +42,9 @@ public class JPAConfig {
     public DataSource getDataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://127.0.0.1:3306/weather");
-        ds.setUsername("root");
-        ds.setPassword(" ");
+        ds.setUrl(env.getProperty("db.url"));
+        ds.setUsername(env.getProperty("db.user"));
+        ds.setPassword(env.getProperty("db.password"));
         return ds;
     }
 
