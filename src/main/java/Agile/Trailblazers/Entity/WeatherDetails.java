@@ -16,6 +16,7 @@ public class WeatherDetails {
     private Timestamp timestamp;
     private String name;
     private int temperature;
+    private String tempretureDifference;
 
     @OneToOne
     private Coordinates coordinates;
@@ -63,5 +64,13 @@ public class WeatherDetails {
 
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
+    }
+
+    public String getTempretureDifference() {
+        return tempretureDifference;
+    }
+
+    public void setTempretureDifference(String tempretureDifference) {
+        this.tempretureDifference = tempretureDifference;
     }
 }

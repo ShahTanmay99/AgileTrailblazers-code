@@ -9,4 +9,5 @@ import java.util.List;
 public interface WeatherRepository {
     WeatherDetails post(WeatherDetails weather);
     WeatherDetails findbyCityCoordinates(float latitude, float longitude);
+    WeatherDetails getWeather(WeatherDetails city1, WeatherDetails city2);
 }

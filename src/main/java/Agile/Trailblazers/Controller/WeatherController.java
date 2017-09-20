@@ -34,11 +34,12 @@ public class WeatherController {
     @RequestMapping(method = RequestMethod.GET, value = "/lat1={latitude1}&lon1={longitude1}&lat2={latitude2}&lon2={longitude2}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation(value = "Weather property", notes = "Returns respective properties of each City")
-    public void getDetails(@PathVariable("latitude1") float latitude1, @PathVariable("longitude1") float longitude1,
+    public WeatherDetails getDetails(@PathVariable("latitude1") float latitude1, @PathVariable("longitude1") float longitude1,
                             @PathVariable("latitude2") float latitude2, @PathVariable("longitude2") float longitude2){
-
             WeatherDetails city_1= service.findbyCityCoordinates(latitude1, longitude1);
             WeatherDetails city_2= service.findbyCityCoordinates(latitude2, longitude2);
+            return service.getWeather(city_1,city_2);
+
 
     }
 }

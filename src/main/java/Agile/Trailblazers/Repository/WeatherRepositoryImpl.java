@@ -34,4 +34,20 @@ public class WeatherRepositoryImpl implements WeatherRepository {
             return null;
         }
     }
+    public WeatherDetails getWeather(WeatherDetails city1, WeatherDetails city2){
+        int tempreture1 = city1.getTemperature();
+        int tempreture2= city2.getTemperature();
+        int difference = tempreture1-tempreture2;
+
+        if(difference>0)
+            city1.setTempretureDifference("Tempreture of City" + city1.getName() + " is " + difference +
+                                            " Fahrenheit high as compared to " + city2.getName());
+        else if(difference<0)
+            city1.setTempretureDifference("Tempreture of City" + city1.getName() + " is " + difference +
+                    " Fahrenheit low as compared to " + city2.getName());
+        else
+            city1.setTempretureDifference("Tempreture of City" + city1.getName() +
+                            " is same compared to " + city2.getName());
+        return city1;
+    }
 }
